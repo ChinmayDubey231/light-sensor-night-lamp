@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect width="900" height="540" fill="#ffffff"/>
+
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#222">Night lamp: wiring diagram</text>
+  <text x="450" y="64" text-anchor="middle" font-size="14" fill="#555">LDR voltage divider on A0 (sensor) · LED on PWM pin D9 (output)</text>
+
+  <!-- Arduino Uno block -->
+  <rect x="40" y="110" width="200" height="330" rx="10" fill="#00878f"/>
+  <text x="140" y="145" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Arduino Uno</text>
+  <text x="140" y="166" text-anchor="middle" font-size="12" fill="#d8f3f4">ATmega328P</text>
+  <g font-size="15" font-weight="bold" fill="#fff" text-anchor="end">
+    <text x="226" y="205">5V</text>
+    <text x="226" y="255">A0</text>
+    <text x="226" y="335">GND</text>
+    <text x="226" y="405">D9 ~</text>
+  </g>
+  <g fill="#e8e8e8" stroke="#333" stroke-width="1">
+    <rect x="234" y="194" width="12" height="12"/>
+    <rect x="234" y="244" width="12" height="12"/>
+    <rect x="234" y="324" width="12" height="12"/>
+    <rect x="234" y="394" width="12" height="12"/>
+  </g>
+
+  <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 5V to top of R1 -->
+    <polyline points="246,200 460,200" stroke="#d62828"/>
+    <!-- R1 10k zigzag (vertical), ends at the divider node -->
+    <polyline points="460,200 460,208 472,213 448,221 472,229 448,237 460,242 460,250" stroke="#333" stroke-width="2.5"/>
+    <!-- A0 to node -->
+    <polyline points="246,250 460,250" stroke="#2a9d3f"/>
+    <!-- node to LDR -->
+    <polyline points="460,250 460,276" stroke="#333"/>
+    <!-- LDR zigzag -->
+    <polyline points="460,276 460,282 472,287 448,297 472,307 448,317 460,322 460,328" stroke="#333" stroke-width="2.5"/>
+    <!-- LDR to ground -->
+    <polyline points="460,328 460,352" stroke="#111"/>
+    <!-- Arduino GND to ground -->
+    <polyline points="246,330 300,330 300,352" stroke="#111"/>
+
+    <!-- D9 to R2 -->
+    <polyline points="246,400 560,400" stroke="#f08c00"/>
+    <!-- R2 220 zigzag (horizontal) -->
+    <polyline points="560,400 566,400 571,388 581,412 591,388 601,412 611,388 616,400 622,400" stroke="#333" stroke-width="2.5"/>
+    <!-- R2 to LED anode -->
+    <polyline points="622,400 680,400" stroke="#f08c00"/>
+    <!-- LED cathode to ground -->
+    <polyline points="712,400 780,400 780,432" stroke="#111"/>
+  </g>
+
+  <!-- divider node dot -->
+  <circle cx="460" cy="250" r="5" fill="#2a9d3f"/>
+
+  <!-- LDR circle and incoming light arrows -->
+  <circle cx="460" cy="302" r="30" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="392" y1="262" x2="424" y2="286" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="384" y1="284" x2="420" y2="306" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- LED symbol -->
+  <polygon points="680,384 680,416 710,400" fill="#ffd43b" stroke="#333" stroke-width="2"/>
+  <line x1="712" y1="384" x2="712" y2="416" stroke="#333" stroke-width="3"/>
+  <line x1="690" y1="380" x2="704" y2="358" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="704" y1="382" x2="718" y2="360" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ground symbols -->
+  <g stroke="#111" stroke-width="3" stroke-linecap="round">
+    <line x1="445" y1="352" x2="475" y2="352"/><line x1="451" y1="359" x2="469" y2="359"/><line x1="457" y1="366" x2="463" y2="366"/>
+    <line x1="285" y1="352" x2="315" y2="352"/><line x1="291" y1="359" x2="309" y2="359"/><line x1="297" y1="366" x2="303" y2="366"/>
+    <line x1="765" y1="432" x2="795" y2="432"/><line x1="771" y1="439" x2="789" y2="439"/><line x1="777" y1="446" x2="783" y2="446"/>
+  </g>
+
+  <!-- labels -->
+  <g font-size="14" fill="#222">
+    <text x="482" y="222" font-weight="bold">R1  10 kΩ</text>
+    <text x="500" y="298" font-weight="bold">LDR</text>
+    <text x="500" y="316" fill="#555">photoresistor</text>
+    <text x="340" y="240" fill="#2a9d3f">sensor signal</text>
+    <text x="566" y="374" font-weight="bold">R2  220 Ω</text>
+    <text x="664" y="446" font-weight="bold">LED (yellow)</text>
+    <text x="664" y="463" fill="#555">long leg = anode, toward R2</text>
+    <text x="330" y="420" fill="#f08c00">PWM output</text>
+    <text x="256" y="190" fill="#d62828">5V</text>
+    <text x="256" y="322" fill="#111">GND</text>
+  </g>
+
+  <!-- footer notes -->
+  <line x1="40" y1="488" x2="860" y2="488" stroke="#ddd" stroke-width="1"/>
+  <text x="40" y="512" font-size="13" fill="#444">More light → lower LDR resistance → lower A0 reading → LED dims, then turns off.</text>
+  <text x="40" y="530" font-size="13" fill="#444">In Wokwi, the photoresistor module contains R1 + LDR: wire VCC → 5V, GND → GND, AO → A0.</text>
+</svg>
